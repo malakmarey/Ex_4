@@ -1,7 +1,12 @@
-
 #pragma once
 #include <string>
-using namespace std;
+#include <iostream>
+using std::string;
+
 namespace bullpgia {
- std::string calculateBullAndPgia( std::string choice,  std::string guess);
-}
+
+
+    string calculateBullAndPgia(string choice, string guess);
+
+
+};
