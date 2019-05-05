@@ -32,7 +32,7 @@ int main()
 
 		testcase.setname("Calculate bull and pgia")
 			.CHECK_OUTPUT(calculateBullAndPgia("1234", "1234"), "4,0") // 4 bull, 0 pgia
-					.CHECK_OUTPUT(calculateBullAndPgia("1234","4321"), "0,4")      // 0 bull, 4 pgia
+			.CHECK_OUTPUT(calculateBullAndPgia("1234", "4321"), "0,4") // 0 bull, 4 pgia
 
 			// TESTING BULL AND PGIA
 			.CHECK_OUTPUT(calculateBullAndPgia("5555", "5555"), "4,0") // 4 bull, 0 pgia
@@ -40,14 +40,29 @@ int main()
 			.CHECK_OUTPUT(calculateBullAndPgia("8526", "8521"), "3,0") // 3 bull, 0 pgia
 			.CHECK_OUTPUT(calculateBullAndPgia("8526", "8511"), "2,0") // 2 bull, 0 pgia
 			.CHECK_OUTPUT(calculateBullAndPgia("8526", "8411"), "1,0") // 1 bull, 0 pgia
+			.CHECK_OUTPUT(calculateBullAndPgia("856", "1811"), "1,0") // 1 bull, 0 pgia
+			.CHECK_OUTPUT(calculateBullAndPgia("86", "2411"), "1,0") // 1 bull, 0 pgia
+			.CHECK_OUTPUT(calculateBullAndPgia("26", "3411"), "1,0") // 1 bull, 0 pgia
+			.CHECK_OUTPUT(calculateBullAndPgia("282", "9311"), "1,0") // 1 bull, 0 pgia
+			.CHECK_OUTPUT(calculateBullAndPgia("523", "2911"), "1,0") // 1 bull, 0 pgia
+			.CHECK_OUTPUT(calculateBullAndPgia("727", "851"), "1,0") // 1 bull, 0 pgia
+			.CHECK_OUTPUT(calculateBullAndPgia("963", "411"), "1,0") // 1 bull, 0 pgia
+			.CHECK_OUTPUT(calculateBullAndPgia("8732", "811"), "1,0") // 1 bull, 0 pgia
+			.CHECK_OUTPUT(calculateBullAndPgia("272", "81"), "1,0") // 1 bull, 0 pgia
+			.CHECK_OUTPUT(calculateBullAndPgia("687", "913"), "1,0") // 1 bull, 0 pgia
+			.CHECK_OUTPUT(calculateBullAndPgia("2298", "6867"), "3,0") // 1 bull, 0 pgia
+			.CHECK_OUTPUT(calculateBullAndPgia("354", "6801"), "5,0") // 1 bull, 0 pgia
+			.CHECK_OUTPUT(calculateBullAndPgia("428", "680"), "2,0") // 1 bull, 0 pgia
+			.CHECK_OUTPUT(calculateBullAndPgia("808", "580"), "1,0") // 1 bull, 0 pgia
+
 			;
 
 		testcase.setname("Play with dummy choosers and guessers")
-			.CHECK_EQUAL(play(c1234, g1234, 4, 100), 1)	
-			.CHECK_EQUAL(play(c1234, g9999, 4, 100), 101) 
+			.CHECK_EQUAL(play(c1234, g1234, 4, 100), 1)
+			.CHECK_EQUAL(play(c1234, g9999, 4, 100), 101)
 			.CHECK_EQUAL(play(c12345, g1234, 4, 100), 0)
-					.CHECK_EQUAL(play(c1234, g12345, 4, 100), 101)   // guesser loses technically by making an illegal guess (too long).
-   
+			.CHECK_EQUAL(play(c1234, g12345, 4, 100), 101) // guesser loses technically by making an illegal guess (too long).
+
 			;
 
 		testcase.setname("Play with smart guesser");
@@ -58,8 +73,6 @@ int main()
 		{
 			testcase.CHECK_EQUAL(play(randy, smarty, 1, 100) <= 10, true); // smarty should always win in at most 10 turns!
 		}
-
-		
 
 		testcase.setname("Random chooser with smart guesser")
 			.CHECK_EQUAL(play(randy, smarty, 4, 100) <= 10, true)
