@@ -1,17 +1,32 @@
-    
-#include <math.h>
+#pragma once
 #include <iostream>
-#include <vector>
-#include "calculate.hpp"
 #include "Guesser.hpp"
+#include <set>
+#include <iterator>
+
+namespace bullpgia{
 
 using namespace std;
-using namespace bullpgia;
-class SmartGuesser : public Guesser{
-    
+class SmartGuesser : public bullpgia::Guesser {
     public:
-    string guess() override;
-    void learn(string) override;
-    void startNewGame(uint ut) override;
+
+    string currentGuess;
+
+    set<string> allCombinations;
+
+    virtual string guess() override;
+
+    void startNewGame(uint length) override;
+    
+    void learn(string l) override;
+    
+    
+
+    private:
+    string fixNumber(string, uint); //this function will fix the number of the form
+
+    void setBuilder(uint length);
 
 };
+
+}
