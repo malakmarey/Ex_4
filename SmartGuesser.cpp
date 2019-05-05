@@ -1,22 +1,47 @@
+#include <iostream>
+#include <cmath>
 #include "SmartGuesser.hpp"
-#include <stdlib.h>
+
 using namespace std;
+using namespace bullpgia;
 
-string lastGuess = "";
-string nextGuess = "";
-vector<string> vec;
-string SmartGuesser::guess()
-{
-  return "";
-}
-void SmartGuesser::learn(string s)
-{
-	
+
+void SmartGuesser::startNewGame(uint length) {
+    this->length = length;
+    setBuilder(length);
 }
 
-void optionArr(string curr, int size)
-{
+void SmartGuesser::setBuilder(uint length) {
+    string combination;
+    int maxComb = pow(10,length);
+    for(int i=0; i<maxComb; i++){
+        combination = fixNumber(to_string(i),length);
+        allCombinations.insert(combination);
+    }
 }
-void SmartGuesser::startNewGame(uint ut)
-{
+
+string SmartGuesser::fixNumber(string num, uint reqLength){
+    while(num.length() < reqLength){
+        num = "0" + num;    
+    }
+    return num;
+}
+
+string SmartGuesser::guess() {
+    int rnd = rand() % allCombinations.size();
+    auto it = allCombinations.begin();
+    advance(it, rnd);
+    currentGuess = *it;
+    return currentGuess;
+}
+
+void SmartGuesser::learn(string l) {
+    auto it = allCombinations.begin();
+    while( it != allCombinations.end()) {
+        string ans = calculateBullAndPgia(currentGuess, *it);
+        if(ans != l) {
+           it = allCombinations.erase(it);
+        }
+        else it++;
+    }
 }
