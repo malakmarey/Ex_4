@@ -37,23 +37,19 @@ int main()
 			// TESTING BULL AND PGIA
 			.CHECK_OUTPUT(calculateBullAndPgia("5555", "5555"), "4,0") // 4 bull, 0 pgia
 			.CHECK_OUTPUT(calculateBullAndPgia("0000", "5555"), "0,0") // 0 bull, 0 pgia
-			.CHECK_OUTPUT(calculateBullAndPgia("8526", "8521"), "3,0") // 3 bull, 0 pgia
-			.CHECK_OUTPUT(calculateBullAndPgia("8526", "8511"), "2,0") // 2 bull, 0 pgia
-			.CHECK_OUTPUT(calculateBullAndPgia("8526", "8411"), "1,0") // 1 bull, 0 pgia
-			.CHECK_OUTPUT(calculateBullAndPgia("856", "1811"), "1,0") // 1 bull, 0 pgia
-			.CHECK_OUTPUT(calculateBullAndPgia("86", "2411"), "1,0") // 1 bull, 0 pgia
-			.CHECK_OUTPUT(calculateBullAndPgia("26", "3411"), "1,0") // 1 bull, 0 pgia
-			.CHECK_OUTPUT(calculateBullAndPgia("282", "9311"), "1,0") // 1 bull, 0 pgia
-			.CHECK_OUTPUT(calculateBullAndPgia("523", "2911"), "1,0") // 1 bull, 0 pgia
-			.CHECK_OUTPUT(calculateBullAndPgia("727", "851"), "1,0") // 1 bull, 0 pgia
-			.CHECK_OUTPUT(calculateBullAndPgia("963", "411"), "1,0") // 1 bull, 0 pgia
-			.CHECK_OUTPUT(calculateBullAndPgia("8732", "811"), "1,0") // 1 bull, 0 pgia
-			.CHECK_OUTPUT(calculateBullAndPgia("272", "81"), "1,0") // 1 bull, 0 pgia
-			.CHECK_OUTPUT(calculateBullAndPgia("687", "913"), "1,0") // 1 bull, 0 pgia
-			.CHECK_OUTPUT(calculateBullAndPgia("2298", "6867"), "3,0") // 1 bull, 0 pgia
-			.CHECK_OUTPUT(calculateBullAndPgia("354", "6801"), "5,0") // 1 bull, 0 pgia
-			.CHECK_OUTPUT(calculateBullAndPgia("428", "680"), "2,0") // 1 bull, 0 pgia
-			.CHECK_OUTPUT(calculateBullAndPgia("808", "580"), "1,0") // 1 bull, 0 pgia
+			.CHECK_OUTPUT(calculateBullAndPgia("9999", "9999"), "4,0")
+			.CHECK_OUTPUT(calculateBullAndPgia("8787", "8787"), "4,0")
+			.CHECK_OUTPUT(calculateBullAndPgia("1", "1"), "1,0")
+			.CHECK_OUTPUT(calculateBullAndPgia("55", "55"), "2,0")
+			.CHECK_OUTPUT(calculateBullAndPgia("57", "57"), "2,0")
+			.CHECK_OUTPUT(calculateBullAndPgia("12367", "12367"), "5,0")
+			.CHECK_OUTPUT(calculateBullAndPgia("85285285", "85285285"), "8,0")
+			.CHECK_OUTPUT(calculateBullAndPgia("3212", "54"), "0,0")
+			.CHECK_OUTPUT(calculateBullAndPgia("6565656565", "656565656565"), "10,0")// 0 bull, 10 pgia
+
+    .CHECK_OUTPUT(calculateBullAndPgia("",""),"0,0") // 0 bull, 0 pgia
+
+
 
 			;
 
@@ -69,12 +65,24 @@ int main()
 		RandomChooser randy;
 		SmartGuesser smarty;
 		RandomGuesser randy_g;
+
 		for (uint i = 0; i < 100; ++i)
 		{
 			testcase.CHECK_EQUAL(play(randy, smarty, 1, 100) <= 10, true); // smarty should always win in at most 10 turns!
 		}
 
 		testcase.setname("Random chooser with smart guesser")
+					.CHECK_EQUAL(play(randy, smarty, 4, 100) <= 10, true)
+			.CHECK_EQUAL(play(randy, smarty, 4, 100) <= 10, true)
+			.CHECK_EQUAL(play(randy, smarty, 4, 100) <= 10, true)
+			.CHECK_EQUAL(play(randy, smarty, 4, 100) <= 10, true)
+			.CHECK_EQUAL(play(randy, smarty, 4, 100) <= 10, true)
+			.CHECK_EQUAL(play(randy, smarty, 4, 100) <= 10, true)
+			.CHECK_EQUAL(play(randy, smarty, 4, 100) <= 10, true)
+			.CHECK_EQUAL(play(randy, smarty, 4, 100) <= 10, true)
+			.CHECK_EQUAL(play(randy, smarty, 4, 100) <= 10, true)
+			.CHECK_EQUAL(play(randy, smarty, 4, 100) <= 10, true)
+			.CHECK_EQUAL(play(randy, smarty, 4, 100) <= 10, true)
 			.CHECK_EQUAL(play(randy, smarty, 4, 100) <= 10, true)
 			.CHECK_EQUAL(play(randy, smarty, 4, 100) <= 10, true)
 			.CHECK_EQUAL(play(randy, smarty, 4, 100) <= 10, true)
